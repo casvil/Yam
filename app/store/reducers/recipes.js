@@ -1,7 +1,29 @@
-export default (state = 0, action) => {
+
+export default (state = {}, action) => {
   switch (action.type) {
-    case 'TEST':
-      return state
+    case 'LIKE_ING':
+      if (!state.likeIngredients) {
+        state.likeIngredients = [action.ingredient]
+      } else {
+        if (!state.likeIngredients.includes(action.ingredient))
+        state.likeIngredients.push(action.ingredient)
+      }
+      console.log(state);
+      return Object.assign({}, state)
+    case 'DISLIKE_ING':
+      if (!state.dislikeIngredient) {
+        state.dislikeIngredient = [action.ingredient]
+        if (state.likeIngredients.includes(action.ingredient)) {
+          state.likeIngredients.splice(
+            state.likeIngredients.indexOf(action.ingredient),1
+          )
+        }
+      } else {
+        if (!state.dislikeIngredient.includes(action.ingredient))
+        state.dislikeIngredient.push(action.ingredient)
+      }
+      console.log(state);
+      return Object.assign({}, state)
     default:
       return state
   }

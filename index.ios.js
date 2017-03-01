@@ -10,13 +10,16 @@ import { AppRegistry } from 'react-native';
 import AppContainer from './app/containers/AppContainer/';
 import reducers from './app/store/reducers/';
 
+
 const store = createStore(
-  reducers
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 const App = () => (
   <Provider store={store}>
     <AppContainer />
+
   </Provider>
 )
 export default App;
