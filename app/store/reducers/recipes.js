@@ -27,6 +27,13 @@ export default (state = {}, action) => {
       case 'USER_SERVINGS':
         state.userServings = { servings: action.value }
         return Object.assign({}, state)
+      case 'USER_ALLERGIES':
+        if(!state.allergies) {
+          state.allergies = [action.allergy]
+        } else {
+          state.allergies = [...state.allergies, action.allergy]
+        }
+        return Object.assign({}, state)
     default:
       return state
   }

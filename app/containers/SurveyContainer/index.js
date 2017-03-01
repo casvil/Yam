@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import { likeIngredient, dislikeIngredient, userServings } from '../../store/actions/'
+import { likeIngredient, dislikeIngredient, userServings, userAllergies } from '../../store/actions/'
 import IngredientCard from '../../components/IngredientCard/';
 import PeopleCard from '../../components/PeopleCard/';
 import AllergyGrid from '../../components/AllergyGrid';
@@ -33,8 +33,7 @@ class SurveyContainer extends Component {
   }
 
   handleAllergy = (allergy) => {
-    // this.props.allergies(allergy)
-    console.log(allergy);
+    this.props.allergies(allergy)
   }
 
 
@@ -68,7 +67,8 @@ const mapStatetoProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   likeIngredient: (ingredient) => dispatch(likeIngredient(ingredient)),
   dislikeIngredient: (ingredient) => dispatch(dislikeIngredient(ingredient)),
-  userServings: (value) => dispatch(userServings(value))
+  userServings: (value) => dispatch(userServings(value)),
+  allergies: (allergy) => dispatch(userAllergies(allergy))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(SurveyContainer)

@@ -12,3 +12,8 @@ export const userServings = (value) => ({
   type: 'USER_SERVINGS',
   value
 })
+
+export const userAllergies =(allergy) => ({
+  type: 'USER_ALLERGIES',
+  allergy
+})
