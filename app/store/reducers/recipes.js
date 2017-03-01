@@ -24,7 +24,11 @@ export default (state = {}, action) => {
       }
       console.log(state);
       return Object.assign({}, state)
+      case 'USER_SERVINGS':
+        state.userServings = { servings: action.value }
+        return Object.assign({}, state)
     default:
       return state
   }
+
 }

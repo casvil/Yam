@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native'
-import { likeIngredient, dislikeIngredient } from '../../store/actions/'
+import { likeIngredient, dislikeIngredient, userServings } from '../../store/actions/'
 import IngredientCard from '../../components/IngredientCard/'
+import PeopleCard from '../../components/PeopleCard/'
+
 import images from '../../images/'
 import Swiper from 'react-native-swiper';
 
 class SurveyContainer extends Component {
 
+  constructor () {
+    super()
+    this.state = {
+      value: 3
+    }
+  }
 
   clickLike = (ingredient) => {
     this.props.likeIngredient(ingredient);
@@ -17,6 +25,10 @@ class SurveyContainer extends Component {
     this.props.dislikeIngredient(ingredient);
   }
 
+  handleSlideChange = (value) => {
+    this.setState({value})
+    this.props.userServings(value)
+  }
 
 
   render() {
@@ -29,19 +41,9 @@ class SurveyContainer extends Component {
           clickLike = { this.clickLike }
           clickDisLike = { this.clickDisLike }
           />
-          <IngredientCard
-          key = { images[1].id }
-          ingredient = { images[1].title }
-          imageURL = {images[1].url}
-          clickLike = { this.clickLike }
-          clickDisLike = { this.clickDisLike }
-          />
-          <IngredientCard
-          key = { images[2].id }
-          ingredient = { images[2].title }
-          imageURL = {images[2].url}
-          clickLike = { this.clickLike }
-          clickDisLike = { this.clickDisLike }
+          <PeopleCard
+            value = {this.state.value}
+            handleChange = { this.handleSlideChange }
           />
       </Swiper>
     )
@@ -54,7 +56,8 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   likeIngredient: (ingredient) => dispatch(likeIngredient(ingredient)),
-  dislikeIngredient: (ingredient) => dispatch(dislikeIngredient(ingredient))
+  dislikeIngredient: (ingredient) => dispatch(dislikeIngredient(ingredient)),
+  userServings: (value) => dispatch(userServings(value))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(SurveyContainer)
