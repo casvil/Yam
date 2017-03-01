@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
 import { View , Card, Image, Title, Button } from '@shoutem/ui';
 import { Text, Slider } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import images from '../../images/'
+import styles from './styles'
+
 export default class PeopleCard extends Component {
   constructor (props) {
     super(props)
@@ -25,7 +29,10 @@ export default class PeopleCard extends Component {
         minimumTrackTintColor={ '#70C1B3' }
         maximumTrackTintColor={ '#C2C2C2' }
         />
-        <Text>{this.props.value} people</Text>
+        <View styleName = "horizontal h-center v-center">
+          <Icon size={30} name="person" color="#70C1B3" />
+          <Text style={styles.people}>{this.props.value} people</Text>
+        </View>
       </View>
     )
   }

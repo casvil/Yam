@@ -33,7 +33,7 @@ class SurveyContainer extends Component {
 
   render() {
     return (
-      <Swiper>
+      <Swiper loop={false}>
           <IngredientCard
           key = { images[0].id }
           ingredient = { images[0].title }
