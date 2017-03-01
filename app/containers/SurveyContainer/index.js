@@ -32,9 +32,9 @@ class SurveyContainer extends Component {
     this.props.userServings(value)
   }
 
-  handleAllergy = () => {
+  handleAllergy = (allergy) => {
     // this.props.allergies(allergy)
-    console.log('hello');
+    console.log(allergy);
   }
 
 
