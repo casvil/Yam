@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native'
+import { View } from 'react-native';
+import Swiper from 'react-native-swiper';
+
 import { likeIngredient, dislikeIngredient, userServings } from '../../store/actions/'
-import IngredientCard from '../../components/IngredientCard/'
-import PeopleCard from '../../components/PeopleCard/'
+import IngredientCard from '../../components/IngredientCard/';
+import PeopleCard from '../../components/PeopleCard/';
+import AllergyGrid from '../../components/AllergyGrid';
 
 import images from '../../images/'
-import Swiper from 'react-native-swiper';
 
 class SurveyContainer extends Component {
 
@@ -30,20 +32,29 @@ class SurveyContainer extends Component {
     this.props.userServings(value)
   }
 
+  handleAllergy = () => {
+    // this.props.allergies(allergy)
+    console.log('hello');
+  }
+
 
   render() {
     return (
       <Swiper loop={false}>
           <IngredientCard
-          key = { images[0].id }
-          ingredient = { images[0].title }
-          imageURL = {images[0].url}
-          clickLike = { this.clickLike }
-          clickDisLike = { this.clickDisLike }
+          key={ images[0].id }
+          ingredient={ images[0].title }
+          imageURL={images[0].url}
+          clickLike={ this.clickLike }
+          clickDisLike={ this.clickDisLike }
           />
           <PeopleCard
-            value = {this.state.value}
-            handleChange = { this.handleSlideChange }
+            value={ this.state.value }
+            handleChange={ this.handleSlideChange }
+          />
+          <AllergyGrid
+            allergies={ images }
+            handleAllergy={ this.handleAllergy }
           />
       </Swiper>
     )
