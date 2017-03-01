@@ -6,7 +6,7 @@ export default (state = {}, action) => {
         state.likeIngredients = [action.ingredient]
       } else {
         if (!state.likeIngredients.includes(action.ingredient))
-        state.likeIngredients.push(action.ingredient)
+          state.likeIngredients = [...state.likeIngredients, action.ingredient]
       }
       console.log(state);
       return Object.assign({}, state)
@@ -20,7 +20,7 @@ export default (state = {}, action) => {
         }
       } else {
         if (!state.dislikeIngredient.includes(action.ingredient))
-        state.dislikeIngredient.push(action.ingredient)
+          state.dislikeIngredient = [...state.dislikeIngredient,action.ingredient]
       }
       console.log(state);
       return Object.assign({}, state)
