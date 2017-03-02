@@ -1,5 +1,5 @@
 import React from 'react';
-import { View , Card, Image, Title, Button, NavigationBar } from '@shoutem/ui';
+import { View , Card, Image, Title, Button } from '@shoutem/ui';
 import { Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { styles }  from './styles.js'

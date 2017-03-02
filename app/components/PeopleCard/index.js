@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View , Card, Image, Title, Button } from '@shoutem/ui';
+import { View , Card, Image, Title, Button, NavigationBar } from '@shoutem/ui';
 import { Text, Slider } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -16,6 +16,10 @@ export default class PeopleCard extends Component {
   render() {
     return (
       <View>
+        <NavigationBar
+           styleName="inline"
+           centerComponent={<Title>SERVINGS</Title>}
+         />
         <Image
         styleName="large-square"
         source={{uri: images[0].url }}
