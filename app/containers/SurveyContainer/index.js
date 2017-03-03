@@ -8,7 +8,7 @@ import { likeIngredient, dislikeIngredient, userServings, userAllergies, getReci
 import IngredientCard from '../../components/IngredientCard/';
 import PeopleCard from '../../components/PeopleCard/';
 import AllergyGrid from '../../components/AllergyGrid';
-
+import RecipeListContainer from '../RecipeListContainer/'
 import images from '../../images/'
 import allergies from '../../images/allergies'
 class SurveyContainer extends Component {
@@ -21,7 +21,6 @@ class SurveyContainer extends Component {
   }
 
   componentDidMount () {
-    this.props.getRecipes()
   }
 
   clickLike = (ingredient) => {
@@ -60,6 +59,7 @@ class SurveyContainer extends Component {
             allergies={ allergies }
             handleAllergy={ this.handleAllergy }
           />
+          <RecipeListContainer />
       </Swiper>
     )
   }
