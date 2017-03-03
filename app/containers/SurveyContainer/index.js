@@ -66,7 +66,7 @@ class SurveyContainer extends Component {
 }
 
 const mapStatetoProps = (state) => {
-  return state
+  return {state}
 }
 
 const mapDispatchToProps = (dispatch) => ({

@@ -20,7 +20,8 @@ export const userAllergies =(allergy) => ({
 
 export const addRecipes = (recipes) => ({
   type: 'ADD_RECIPES',
-  recipes
+  recipes,
+  id: recipes.id
 })
 
 export const getRecipes = () => ({
@@ -31,11 +32,11 @@ export const getRecipes = () => ({
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-Mashape-Key':""
+        'X-Mashape-Key':"U22l9xW2HymshjNYfrbP8U3Y4tPbp1stK76jsncRLKVTBHgxnO"
       }
     },
     next: true,
-    success: getRecipesDetail
+    success: addRecipes
   },
 })
 
@@ -46,9 +47,9 @@ export const getRecipesDetail = (id) => ({
     config : {
       method: 'GET',
       headers: {
-        'X-Mashape-Key':""
+        'X-Mashape-Key':"U22l9xW2HymshjNYfrbP8U3Y4tPbp1stK76jsncRLKVTBHgxnO"
       }
     },
-    success: addRecipes
+    success: updateRecipes
   },
 })
