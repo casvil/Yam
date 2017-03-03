@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { NavigationBar, Title } from '@shoutem/ui';
 
 import { likeIngredient, dislikeIngredient, userServings, userAllergies, getRecipes } from '../../store/actions/'
 import IngredientCard from '../../components/IngredientCard/';
