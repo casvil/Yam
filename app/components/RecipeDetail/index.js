@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, ListView } from 'react-native';
 import { NavigationBar, Title, Subtitle, Image, Tile } from '@shoutem/ui';
 import RecipeInstructions from '../RecipeInstructions/';
 import RecipeIngredients from '../RecipeIngredients/';
+import styles from './styles';
 
 export default ({ recipe, instructions }) => {
   let renderInstructions
   let renderIngredients
+  const styles_sectionTitle = StyleSheet.flatten(styles.sectionTitle)
   if(instructions) {
     renderInstructions = instructions.map((step) => {
       return (
@@ -38,19 +40,19 @@ export default ({ recipe, instructions }) => {
       </Tile>
     </Image>
       <View style={{margin: 20}}>
-        <View style={{backgroundColor: '#000000', borderRadius: 10, width: 100, alignItems: 'center', padding: 2, marginBottom: 10}}>
+        <View style={styles_sectionTitle}>
           <Subtitle style={{color: '#FFFFFF'}}>Ingredients</Subtitle>
         </View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {renderIngredients}
         </ScrollView>
+          <View style={styles_sectionTitle}>
+            <Subtitle style={{color: '#FFFFFF'}}>Instructions</Subtitle>
+          </View>
+          <ScrollView>
+          { renderInstructions }
+          </ScrollView>
       </View>
-      <View style={{backgroundColor: '#000000', borderRadius: 10, width: 100, alignItems: 'center', padding: 2, margin: 20, marginBottom: 10}}>
-        <Subtitle style={{color: '#FFFFFF'}}>Instructions</Subtitle>
-      </View>
-      <ScrollView pagingEnabled={true}>
-        { renderInstructions }
-      </ScrollView>
   </View>
   )
 }
