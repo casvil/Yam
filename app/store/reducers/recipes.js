@@ -20,14 +20,10 @@ export default (state = {}, action) => {
         return Object.assign({}, state, newValues)
       }
     case 'UPDATE_RECIPE': {
-      const newValues = {}
-      if(state[action.id]) {
-        console.log(state[action.id]);
-        newValues.instructions = action.instructions
-      }
       const addedInstructions = {}
-      addedInstructions[action.id] = Object.assign({}, state[action.id], newValues)
-      console.log(addedInstructions);
+      if(state[action.id]) {
+        addedInstructions[action.id] = Object.assign({}, state[action.id], {instructions: action.instructions})
+      }
       return Object.assign({}, state, addedInstructions)
     }
     default:
