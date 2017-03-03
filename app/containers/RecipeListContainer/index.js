@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getRecipes } from '../../store/actions/';
+import { getRecipes, getRecipesDetail } from '../../store/actions/';
 import RecipeList from '../../components/RecipeList/index.js';
 
 class RecipeListContainer extends Component  {
@@ -17,6 +17,7 @@ class RecipeListContainer extends Component  {
     return (
       <RecipeList
         recipes={this.props.recipes}
+        getRecipesDetail={this.props.getRecipesDetail}
       />
     )
   }
@@ -28,7 +29,9 @@ const mapStatetoProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getRecipes: () => dispatch(getRecipes())
+  getRecipes: () => dispatch(getRecipes()),
+  getRecipesDetail: (id) => dispatch(getRecipesDetail(id))
+
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(RecipeListContainer)

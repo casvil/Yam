@@ -17,15 +17,13 @@ const apiCall = ({ dispatch, getState }) => next => action => {
     return fetch (`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com${action.api.url}`, config)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if(action.api.next) {
           data.results.forEach((el) => {
             dispatch(action.api.success(el))
           })
         }
         else {
-          console.log(action.api.success(data));
-          dispatch(action.api.success(data))
+          dispatch(action.api.success(data , action.api.id))
         }
       })
       .catch((err) => {

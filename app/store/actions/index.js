@@ -24,6 +24,12 @@ export const addRecipes = (recipes) => ({
   id: recipes.id
 })
 
+export const updateRecipe = (instructions, id) => ({
+  type: 'UPDATE_RECIPE',
+  instructions,
+  id
+})
+
 export const getRecipes = () => ({
   type: 'GET_RECIPES',
   api: {
@@ -47,9 +53,11 @@ export const getRecipesDetail = (id) => ({
     config : {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'X-Mashape-Key':"U22l9xW2HymshjNYfrbP8U3Y4tPbp1stK76jsncRLKVTBHgxnO"
       }
     },
-    success: updateRecipes
+    success: updateRecipe,
+    id: id
   },
 })

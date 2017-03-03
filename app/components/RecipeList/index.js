@@ -10,7 +10,7 @@ export default class RecipeList extends Component {
     const styles_recipeMeta = StyleSheet.flatten(styles.recipeMeta)
     const cells = data.map(item => {
       return (
-        <TouchableOpacity key={item.id}>
+        <TouchableOpacity key={item.id} onPress={() => this.props.getRecipesDetail(item.id)}>
           <Image
             key={ item.id }
             styleName="large-banner"
