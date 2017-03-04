@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@shoutem/ui": "^0.10.11",
+    "rc-swipeout": "^1.2.4",
     "react": "15.4.2",
     "react-native": "0.41.2",
     "react-native-linear-gradient": "^2.0.0",

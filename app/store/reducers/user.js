@@ -54,7 +54,7 @@ export default (state = {}, action) => {
           newValues.diets = [...state.diets, action.diet]
         } else {
           newValues.diets = [...state.diets]
-          newValues.allergies.splice(newValues.allergies.indexOf(action.diet),1)
+          newValues.diets.splice(newValues.diets.indexOf(action.diet),1)
         }
       }
       return Object.assign({}, state, newValues);

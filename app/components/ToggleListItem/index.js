@@ -16,7 +16,7 @@ export default class ToggleListItem extends Component {
   }
 
 
-  render () {
+  render() {
     return (
       <Row>
         <Subtitle>{this.props.name}</Subtitle>

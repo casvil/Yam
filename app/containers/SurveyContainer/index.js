@@ -4,11 +4,11 @@ import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { Title } from '@shoutem/ui';
 
-import { likeIngredient, dislikeIngredient, userServings, userAllergies, getRecipes, userDiet } from '../../store/actions/'
+import { userServings, userAllergies, getRecipes, userDiet } from '../../store/actions/'
 import IngredientCard from '../../components/IngredientCard/';
 import PeopleCard from '../../components/PeopleCard/';
-import RecipeListContainer from '../RecipeListContainer/';
 import ToggleList from '../../components/ToggleList/';
+import IngredientList from '../IngredientList/';
 import images from '../../images/'
 import { allergies, diet } from '../../data/'
 
@@ -19,9 +19,6 @@ class SurveyContainer extends Component {
     this.state = {
       value: 3
     }
-  }
-
-  componentDidMount () {
   }
 
   clickLike = (ingredient) => {
@@ -49,13 +46,7 @@ class SurveyContainer extends Component {
   render() {
     return (
       <Swiper loop={false}>
-          <IngredientCard
-          key={ images[0].id }
-          ingredient={ images[0].title }
-          imageURL={images[0].url}
-          clickLike={ this.clickLike }
-          clickDisLike={ this.clickDisLike }
-          />
+          <IngredientList />
           <PeopleCard
             value={ this.state.value }
             handleChange={ this.handleSlideChange }
@@ -70,7 +61,6 @@ class SurveyContainer extends Component {
             handleData={ this.handleDiet }
             title = { <Title>DIET</Title> }
           />
-          <RecipeListContainer />
       </Swiper>
     );
   };
