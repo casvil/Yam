@@ -1,3 +1,5 @@
+import { REHYDRATE } from 'redux-persist/constants'
+
 export default (state = {}, action) => {
   switch (action.type) {
     case 'DISLIKE_ING': {
@@ -42,6 +44,10 @@ export default (state = {}, action) => {
         }
         return Object.assign({}, state, newValues);
       }
+    case REHYDRATE:
+      const incoming = action.payload.user
+      if (incoming) return Object.assign({}, incoming)
+      return state
     default:
       return state
   }

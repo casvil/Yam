@@ -1,4 +1,5 @@
 'use strict';
+import { REHYDRATE } from 'redux-persist/constants'
 
 function parseRecipe (data) {
   const id = data.id+ ''
@@ -43,6 +44,10 @@ export default (state = {}, action) => {
       parseInstructions(action.instructions)
       return Object.assign({}, state, addedInstructions)
     }
+    case REHYDRATE:
+      const incoming = action.payload.recipes
+      if (incoming) return Object.assign({}, incoming)
+      return state
     default:
       return Object.assign({}, state)
   }

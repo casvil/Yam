@@ -4,6 +4,11 @@ import SurveyContainer from '../SurveyContainer/';
 import RecipeListContainer from '../RecipeListContainer'
 import RecipeDetailPage from '../RecipeDetailPage'
 export default class AppContainer extends Component {
+
+  componentWillMount() {
+    this.props.persist
+  }
+
   render() {
     return (
       <Router>
