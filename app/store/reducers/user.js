@@ -45,6 +45,20 @@ export default (state = {}, action) => {
       }
       return Object.assign({}, state, newValues);
     }
+    case 'USER_DIET': {
+      const newValues = {}
+      if (!state.diets) {
+        newValues.diets = [action.diet]
+      } else {
+        if (!state.diets.includes(action.diet)) {
+          newValues.diets = [...state.diets, action.diet]
+        } else {
+          newValues.diets = [...state.diets]
+          newValues.allergies.splice(newValues.allergies.indexOf(action.diet),1)
+        }
+      }
+      return Object.assign({}, state, newValues);
+    }
     default:
       return state
   }

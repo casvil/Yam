@@ -4,10 +4,9 @@ import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { Title } from '@shoutem/ui';
 
-import { likeIngredient, dislikeIngredient, userServings, userAllergies, getRecipes } from '../../store/actions/'
+import { likeIngredient, dislikeIngredient, userServings, userAllergies, getRecipes, userDiet } from '../../store/actions/'
 import IngredientCard from '../../components/IngredientCard/';
 import PeopleCard from '../../components/PeopleCard/';
-import AllergyGrid from '../../components/AllergyGrid';
 import RecipeListContainer from '../RecipeListContainer/';
 import ToggleList from '../../components/ToggleList/';
 import images from '../../images/'
@@ -42,6 +41,9 @@ class SurveyContainer extends Component {
     this.props.allergies(allergy)
   }
 
+  handleDiet = (diet) => {
+    this.props.diets(diet)
+  }
 
 
   render() {
@@ -63,6 +65,11 @@ class SurveyContainer extends Component {
             handleData={ this.handleAllergy }
             title = { <Title>ALLERGIES</Title> }
           />
+          <ToggleList
+            data={ diet }
+            handleData={ this.handleDiet }
+            title = { <Title>DIET</Title> }
+          />
           <RecipeListContainer />
       </Swiper>
     );
@@ -78,6 +85,7 @@ const mapDispatchToProps = (dispatch) => ({
   dislikeIngredient: (ingredient) => dispatch(dislikeIngredient(ingredient)),
   userServings: (value) => dispatch(userServings(value)),
   allergies: (allergy) => dispatch(userAllergies(allergy)),
+  diets: (diet) => dispatch(userDiet(diet)),
   getRecipes: () => dispatch(getRecipes())
 })
 
