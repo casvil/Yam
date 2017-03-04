@@ -38,6 +38,9 @@ export default (state = {}, action) => {
       } else {
         if (!state.allergies.includes(action.allergy)) {
           newValues.allergies = [...state.allergies, action.allergy]
+        } else {
+          newValues.allergies = [...state.allergies]
+          newValues.allergies.splice(newValues.allergies.indexOf(action.allergy),1)
         }
       }
       return Object.assign({}, state, newValues);
@@ -45,5 +48,4 @@ export default (state = {}, action) => {
     default:
       return state
   }
-
 }

@@ -7,12 +7,13 @@ export default ({step}) => {
       <View style={{marginBottom:0}}>
         <Row>
           <View styleName="vertical">
-            <Subtitle styleName="top">{step.number}</Subtitle>
+            <View>
+              <Subtitle styleName="top">{step.number}</Subtitle>
+            </View>
             <Subtitle>{step.step}</Subtitle>
           </View>
         </Row>
         <Divider styleName="line"/>
     </View>
-
   )
 }

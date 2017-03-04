@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
+import { Title } from '@shoutem/ui';
 
 import { likeIngredient, dislikeIngredient, userServings, userAllergies, getRecipes } from '../../store/actions/'
 import IngredientCard from '../../components/IngredientCard/';
 import PeopleCard from '../../components/PeopleCard/';
 import AllergyGrid from '../../components/AllergyGrid';
-import RecipeListContainer from '../RecipeListContainer/'
+import RecipeListContainer from '../RecipeListContainer/';
+import ToggleList from '../../components/ToggleList/';
 import images from '../../images/'
-import allergies from '../../images/allergies'
+import { allergies, diet } from '../../data/'
+
 class SurveyContainer extends Component {
 
   constructor () {
@@ -40,6 +43,7 @@ class SurveyContainer extends Component {
   }
 
 
+
   render() {
     return (
       <Swiper loop={false}>
@@ -54,18 +58,19 @@ class SurveyContainer extends Component {
             value={ this.state.value }
             handleChange={ this.handleSlideChange }
           />
-          <AllergyGrid
-            allergies={ allergies }
-            handleAllergy={ this.handleAllergy }
+          <ToggleList
+            data={ allergies }
+            handleData={ this.handleAllergy }
+            title = { <Title>ALLERGIES</Title> }
           />
           <RecipeListContainer />
       </Swiper>
-    )
-  }
+    );
+  };
 }
 
 const mapStatetoProps = (state) => {
-  return {state}
+  return { state }
 }
 
 const mapDispatchToProps = (dispatch) => ({
