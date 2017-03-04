@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { View, ListView ,ScrollView } from 'react-native';
-import { NavigationBar, Title, Button, Subtitle } from '@shoutem/ui';
+import { ListView , ScrollView, Text } from 'react-native';
+import { NavigationBar, Title, Button, Subtitle, View } from '@shoutem/ui';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import IngredientListItem from '../../components/IngredientListItem/';
+import SwipeComponentButton from '../../components/SwipeComponentButton/';
 import { dislikeIngredient } from '../../store/actions/'
 
 
@@ -54,10 +55,6 @@ class IngredientList extends Component {
       <ScrollView>
         <IngredientListItem key={0} id={0} handleDislike={this.handleDislike}/>
           { Arr }
-        <Button
-          onPress={() => this.handlePress()}>
-          <Icon name ="ios-add" size={30}/>
-        </Button>
       </ScrollView>
     </View>
     )

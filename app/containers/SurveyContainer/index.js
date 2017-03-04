@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { Title } from '@shoutem/ui';
+import { Title, Text } from '@shoutem/ui';
 
 import { userServings, userAllergies, getRecipes, userDiet } from '../../store/actions/'
 import IngredientCard from '../../components/IngredientCard/';
 import PeopleCard from '../../components/PeopleCard/';
 import ToggleList from '../../components/ToggleList/';
+import SwipeComponentButton from '../../components/SwipeComponentButton/'
 import IngredientList from '../IngredientList/';
 import images from '../../images/'
 import { allergies, diet } from '../../data/'
@@ -42,10 +43,21 @@ class SurveyContainer extends Component {
     this.props.diets(diet)
   }
 
+  renderPagination = (index, total, context) => {
+    if(index + 1  === total) {
+      return (
+        <SwipeComponentButton />
+      )
+    }
+  }
 
   render() {
     return (
-      <Swiper loop={false}>
+      <Swiper
+          renderPagination={this.renderPagination}
+          paginationStyle={{
+            bottom: 1000, left: null, right: 10
+          }} loop={false}>
           <IngredientList />
           <PeopleCard
             value={ this.state.value }

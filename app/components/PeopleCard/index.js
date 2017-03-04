@@ -4,7 +4,6 @@ import { View , Card, Image, Title, Button, NavigationBar } from '@shoutem/ui';
 import { Text, Slider } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import images from '../../images/'
 import styles from './styles'
 
 export default class PeopleCard extends Component {
@@ -22,7 +21,7 @@ export default class PeopleCard extends Component {
          />
         <Image
         styleName="large-square"
-        source={{uri: images[0].url }}
+        source={{uri: 'https://images.unsplash.com/photo-1488324346298-5ad3d8f96d0d?dpr=2&auto=format&fit=crop&w=1080&h=1412&q=80&cs=tinysrgb&crop=' }}
         />
         <Slider
         value={ this.props.value }
