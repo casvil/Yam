@@ -39,7 +39,7 @@ export const updateRecipe = (instructions, id) => ({
 export const getRecipes = () => ({
   type: 'GET_RECIPES',
   api: {
-    url: '/recipes/search?diet=vegetarian&instructionsRequired=true&limitLicense=true&number=10&offset=0&query=burger&type=main+course',
+    url: '/recipes/search?',
     config : {
       method: 'GET',
       headers: {

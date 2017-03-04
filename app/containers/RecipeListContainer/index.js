@@ -9,8 +9,9 @@ class RecipeListContainer extends Component  {
     super(props)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getRecipes()
+    console.log(this.props.getRecipes());
   }
 
   goToDetailPage = (id) => {
