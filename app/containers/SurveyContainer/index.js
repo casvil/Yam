@@ -5,7 +5,6 @@ import Swiper from 'react-native-swiper';
 import { Title, Text } from '@shoutem/ui';
 
 import { userServings, userAllergies, getRecipes, userDiet } from '../../store/actions/'
-import IngredientCard from '../../components/IngredientCard/';
 import PeopleCard from '../../components/PeopleCard/';
 import ToggleList from '../../components/ToggleList/';
 import SwipeComponentButton from '../../components/SwipeComponentButton/'

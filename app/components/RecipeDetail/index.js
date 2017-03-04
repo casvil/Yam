@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, ListView } from 'react-native';
-import { NavigationBar, Title, Subtitle, Image, Tile } from '@shoutem/ui';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { NavigationBar, Title, Subtitle, Image, Tile, Button, ListView } from '@shoutem/ui';
+import Icon from 'react-native-vector-icons/EvilIcons'
+import { Actions } from 'react-native-router-flux';
+
 import RecipeInstructions from '../RecipeInstructions/';
 import RecipeMetaData from '../RecipeMetaData/';
 import styles from './styles';
@@ -16,7 +19,6 @@ export default ({ recipe, instructions }) => {
         <RecipeInstructions step={step} key={recipe.id + step.number}/>
       )
     })
-
     renderIngredients = instructions.map((step) => {
       return step.ingredients.map(el => {
         return (
@@ -34,10 +36,22 @@ export default ({ recipe, instructions }) => {
     })
   }
   return (
-  <View>
+  <View style={{flex:1}}>
     <NavigationBar
        styleName="inline"
        centerComponent={<Title>RECIPE</Title>}
+       leftComponent={
+         <Button
+           onPress={() => Actions.recipeList()}>
+           <Icon name="chevron-left" size={30}/>
+         </Button>
+       }
+       rightComponent={
+         <Button
+           onPress={() => Actions.recipeList()}>
+           <Icon name="cart" size={30}/>
+         </Button>
+       }
     />
     <Image
       key={ recipe.id }
@@ -48,7 +62,7 @@ export default ({ recipe, instructions }) => {
         <Title styleName="md-gutter-bottom">{recipe.title}</Title>
       </Tile>
     </Image>
-      <View style={{ margin: 20 }}>
+      <ScrollView style={{ margin: 20 }} showsVerticalScrollIndicator={false}>
         <View style={ styles_sectionTitle }>
           <Subtitle style={{ color: '#FFFFFF' }}>Equipment</Subtitle>
         </View>
@@ -64,10 +78,8 @@ export default ({ recipe, instructions }) => {
         <View style={styles_sectionTitle}>
           <Subtitle style={{color: '#FFFFFF'}}>Instructions</Subtitle>
         </View>
-        <ScrollView>
-        { renderInstructions }
-        </ScrollView>
-      </View>
+          { renderInstructions }
+      </ScrollView>
   </View>
   )
 }

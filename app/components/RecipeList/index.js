@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, GridRow, NavigationBar, Subtitle, Title, ListView, Image ,Tile, Overlay} from '@shoutem/ui';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet } from 'react-native';
 import styles from './styles.js';
@@ -39,16 +39,18 @@ export default class RecipeList extends Component {
   render () {
     const groupedData = GridRow.groupByRows(this.props.recipes, 1)
     return (
-      <View>
+      <View style={{flex: 1}}>
         <NavigationBar
           styleName="inline"
           centerComponent={ <Title>RECIPES</Title> }
         />
         <View>
+        <ScrollView showsVerticalScrollIndicator={false} alwaysBounceVertical={false}>
           <ListView
             data={ groupedData }
             renderRow={ this.renderRow.bind(this) }
           />
+        </ScrollView>
       </View>
     </View>
     )

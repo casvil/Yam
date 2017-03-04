@@ -4,7 +4,7 @@ import { View, Row , Divider, Caption, Subtitle, Image} from '@shoutem/ui';
 
 export default ({step}) => {
   return (
-      <View style={{marginBottom:0}}>
+      <View>
         <Row>
           <View styleName="vertical">
             <View>

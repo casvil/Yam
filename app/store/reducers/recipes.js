@@ -9,6 +9,7 @@ function parseRecipe (data) {
 }
 
 function parseInstructions(data) {
+  console.log(data);
   var instructions = []
   if(Array.isArray(data)) {
     data.forEach(el => {
