@@ -1,20 +1,5 @@
 export default (state = {}, action) => {
   switch (action.type) {
-    case 'LIKE_ING': {
-        const newValues = {};
-        if (!state.likeIngredients) {
-          newValues.likeIngredients = [action.ingredient]
-        } else {
-          if (!state.likeIngredients.includes(action.ingredient))
-            newValues.likeIngredients = [...state.likeIngredients, action.ingredient]
-          if (state.dislikeIngredient.includes(action.ingredient)) {
-            newValues.dislikeIngredient.splice(
-              state.dislikeIngredient.indexOf(action.ingredient), 1
-            )
-          }
-        }
-        return Object.assign({}, state, newValues)
-      }
     case 'DISLIKE_ING': {
         const newValues = {}
         if (!state.dislikes) newValues.dislikes = [action.dislike]
