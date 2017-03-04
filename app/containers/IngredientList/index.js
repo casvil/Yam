@@ -8,8 +8,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import IngredientListItem from '../../components/IngredientListItem/';
 import { dislikeIngredient } from '../../store/actions/'
 
-const index = 1
 
+const index = 1
 class IngredientList extends Component {
 
   constructor(props) {
@@ -19,8 +19,8 @@ class IngredientList extends Component {
     }
   }
 
-  handleDislike = (value) => {
-    this.props.dislikeIngredient(value)
+  handleDislike = (ingredient, id) => {
+    this.props.dislikeIngredient(ingredient, id)
   }
 
   handlePress = () => {
@@ -30,11 +30,12 @@ class IngredientList extends Component {
   }
 
   render() {
-    let Arr = this.state.stateArr.map((el, i) => {
+    let Arr = this.state.stateArr.map((el) => {
       return (
         <IngredientListItem
           handleDislike={this.handleDislike}
-          key={i}
+          key={el}
+          id={el}
         />
       )
     })
@@ -51,7 +52,7 @@ class IngredientList extends Component {
       }
       />
       <ScrollView>
-        <IngredientListItem key = {1} handleDislike={this.handleDislike}/>
+        <IngredientListItem key={0} id={0} handleDislike={this.handleDislike}/>
           { Arr }
         <Button
           onPress={() => this.handlePress()}>
@@ -68,7 +69,7 @@ const mapStatetoProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  dislikeIngredient: (ingredient) => dispatch(dislikeIngredient(ingredient)),
+  dislikeIngredient: (ingredient, id) => dispatch(dislikeIngredient(ingredient, id)),
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(IngredientList)

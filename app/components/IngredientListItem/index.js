@@ -29,7 +29,7 @@ export default class IngredientListItem extends Component {
         <TextInput
           placeholder={'e.g Bananas...'}
           onChangeText={(value) => this.handleValue(value)}
-          onSubmitEditing={(value) => this.props.handleDislike(value)}
+          onEndEditing={(event) => this.props.handleDislike(event.nativeEvent.text, this.props.id)}
           value={this.state.value}
         />
       </Swipeout>

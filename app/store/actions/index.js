@@ -3,9 +3,10 @@ export const likeIngredient = (ingredient) => ({
   ingredient
 });
 
-export const dislikeIngredient = (ingredient) => ({
+export const dislikeIngredient = (ingredient, id) => ({
   type: 'DISLIKE_ING',
-  ingredient
+  dislike: { [id]: ingredient },
+  id,
 });
 
 export const userServings = (value) => ({
