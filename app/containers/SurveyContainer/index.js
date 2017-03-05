@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { Title, Text } from '@shoutem/ui';
 
-import { userServings, userAllergies, getRecipes, userDiet } from '../../store/actions/'
+import { userServings, userAllergies, getRecipes, userDiet, userSurvey } from '../../store/actions/'
 import PeopleCard from '../../components/PeopleCard/';
 import ToggleList from '../../components/ToggleList/';
 import SwipeComponentButton from '../../components/SwipeComponentButton/'
@@ -19,10 +19,6 @@ class SurveyContainer extends Component {
     this.state = {
       value: 3
     }
-  }
-
-  clickLike = (ingredient) => {
-    this.props.likeIngredient(ingredient);
   }
 
   clickDisLike = (ingredient) => {
@@ -42,10 +38,15 @@ class SurveyContainer extends Component {
     this.props.diets(diet)
   }
 
+  handleSurvey = () => {
+    this.props.userSurvey()
+  }
+
   renderPagination = (index, total, context) => {
+    this.props.userSurvey
     if(index + 1  === total) {
       return (
-        <SwipeComponentButton />
+        <SwipeComponentButton handleSurvey={ this.handleSurvey }/>
       )
     }
   }
@@ -53,7 +54,7 @@ class SurveyContainer extends Component {
   render() {
     return (
       <Swiper
-          renderPagination={this.renderPagination}
+          renderPagination={ this.renderPagination }
           paginationStyle={{
             bottom: 1000, left: null, right: 10
           }} loop={false}>
@@ -87,7 +88,8 @@ const mapDispatchToProps = (dispatch) => ({
   userServings: (value) => dispatch(userServings(value)),
   allergies: (allergy) => dispatch(userAllergies(allergy)),
   diets: (diet) => dispatch(userDiet(diet)),
-  getRecipes: () => dispatch(getRecipes())
+  getRecipes: () => dispatch(getRecipes()),
+  userSurvey: () => dispatch(userSurvey())
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(SurveyContainer)

@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Button, View } from '@shoutem/ui';
 import { Actions } from 'react-native-router-flux';
-export default () => {
-  return (
-    <View styleName="horizontal h-center">
+
+export default class SwipeComponentButton extends Component  {
+
+  _onPress = () => {
+    this.props.handleSurvey()
+    Actions.recipeList()
+  }
+
+  render() {
+    return (
+      <View styleName="horizontal h-center">
       <Button
-        styleName="full-width, dark"
-        style={{borderRadius: 20, width: 125, padding: 5, backgroundColor: '#000' }}
-        onPress={() => Actions.recipeList()}>
-        <Text style={{color: '#FFF'}}>EXIT SURVEY</Text>
+      styleName="full-width, dark"
+      style={{borderRadius: 20, width: 125, padding: 5, backgroundColor: '#000', bottom: 50 }}
+      onPress={() => this._onPress()}>
+      <Text style={{color: '#FFF'}}>FINISH SURVEY</Text>
       </Button>
-    </View>
-  )
+      </View>
+    )
+  }
 }
