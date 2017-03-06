@@ -7,13 +7,15 @@ import { Actions } from 'react-native-router-flux';
 class RecipeListContainer extends Component  {
   constructor(props) {
     super(props)
+    this.state = {
+      recipes: []
+    }
   }
 
   componentDidMount() {
-    console.log(this.props.cooked);
-      if(!this.props.cooked || this.props.cooked < 6 ) {
-        this.props.getRecipes()
-      }
+    if (this.props.lastFetched + 604800000 <= Date.now() || !this.props.lastFetched) {
+      this.props.getRecipes()
+    }
   }
 
   goToDetailPage = (id) => {
@@ -34,12 +36,14 @@ class RecipeListContainer extends Component  {
 const mapStatetoProps = (state) => {
   return {
       recipes: state.recipes.recipe,
-      cooked: state.recipes.cooked
+      cooked: state.recipes.cooked,
+      lastFetched: state.recipes.lastFetched
    }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   getRecipes: () => dispatch(getRecipes()),
+  getRecipesDetail: (id) => dispatch(getRecipesDetail(id)),
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(RecipeListContainer)

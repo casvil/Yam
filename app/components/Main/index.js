@@ -28,6 +28,7 @@ class Main extends Component {
       Actions.survey()
     },3000)
   }
+  
   goToRecipes = () => {
     setTimeout(() => {
       Actions.pop()

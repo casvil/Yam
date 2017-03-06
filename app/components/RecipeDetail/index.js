@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
-import { NavigationBar, Title, Subtitle, Image, Tile, Button, ListView } from '@shoutem/ui';
+import { NavigationBar, Title, Subtitle, Image, Tile, Button, ListView , Caption} from '@shoutem/ui';
 import Icon from 'react-native-vector-icons/EvilIcons'
 import { Actions } from 'react-native-router-flux';
 import ActionButton from 'react-native-action-button';
@@ -14,19 +14,26 @@ export default ({ recipe, instructions, handleCooked }) => {
   let renderIngredients
   let renderEquipment
   const styles_sectionTitle = StyleSheet.flatten(styles.sectionTitle)
-  if(instructions) {
+  if(instructions && recipe.ingredients) {
     renderInstructions = instructions.map((step) => {
       return (
         <RecipeInstructions step={step} key={recipe.id + step.number}/>
       )
     })
-    renderIngredients = instructions.map((step) => {
-      return step.ingredients.map(el => {
+
+    renderIngredients = recipe.ingredients.map((el) => {
         return (
-          <RecipeMetaData data={ el } width={ 70 } tileHeight={ 120 } imageHeight={ 70 }/>
+          <Tile key={el.id} style={{width:100, height: 150, marginRight: 10}}>
+            <Image
+              style={{width: 80, height: 80}}
+              source={{uri: `${el.image}`}}
+            />
+            <Caption style={{width: 100, textAlign: 'center'}}>{el.amount} {el.unit}</Caption>
+            <Caption style={{width: 100, textAlign: 'center'}}>{el.name}</Caption>
+          </Tile>
         )
-      })
     })
+
 
     renderEquipment = instructions.map((step) => {
       return step.equipment.map(el => {
@@ -49,7 +56,7 @@ export default ({ recipe, instructions, handleCooked }) => {
        }
        rightComponent={
          <Button
-           onPress={() => Actions.recipeList()}>
+           onPress={() => Actions.shoppingList()}>
            <Icon name="cart" size={30}/>
          </Button>
        }

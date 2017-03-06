@@ -16,23 +16,12 @@ export default class IngredientListItem extends Component {
 
   render() {
     return (
-      <Swipeout
-        autoClose={true}
-        right={[
-          {
-            text: 'delete',
-            onPress: () => console.log('delete'),
-            style:{backgroundColor: '#3E98bE', color: '#FFFFFF'}
-          }
-        ]}
-      >
         <TextInput
           placeholder={'e.g Bananas...'}
           onChangeText={(value) => this.handleValue(value)}
           onEndEditing={(event) => this.props.handleDislike(event.nativeEvent.text, this.props.id)}
           value={this.state.value}
         />
-      </Swipeout>
     );
   };
 }

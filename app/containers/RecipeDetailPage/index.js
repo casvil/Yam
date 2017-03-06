@@ -11,18 +11,7 @@ class RecipeDetailPage extends Component {
     super(props)
     this.state = {
       value: 3,
-      updated: false
     }
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if(this.props.instructions !== nextProps.instructions) {
-      this.props.getRecipesDetail(this.props.id)
-    }
-  }
-
-  componentDidMount() {
-    this.props.getRecipesDetail(this.props.id)
   }
 
   handleCooked = (recipe) => {
