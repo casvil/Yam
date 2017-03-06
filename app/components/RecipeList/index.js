@@ -3,6 +3,7 @@ import { View, Button, GridRow, NavigationBar, Subtitle, Title, ListView, Image 
 import { Text, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet } from 'react-native';
+import Accordion from 'react-native-collapsible/Accordion';
 import styles from './styles.js';
 
 export default class RecipeList extends Component {
@@ -51,10 +52,10 @@ export default class RecipeList extends Component {
         />
         <View>
         <ScrollView showsVerticalScrollIndicator={false} alwaysBounceVertical={false}>
-          <ListView
-            data={ groupedData }
-            renderRow={ this.renderRow }
-          />
+            <ListView
+              data={ groupedData }
+              renderRow={ this.renderRow }
+            />
         </ScrollView>
       </View>
     </View>

@@ -10,7 +10,10 @@ class RecipeListContainer extends Component  {
   }
 
   componentDidMount() {
-      this.props.getRecipes()
+    console.log(this.props.cooked);
+      if(!this.props.cooked || this.props.cooked < 6 ) {
+        this.props.getRecipes()
+      }
   }
 
   goToDetailPage = (id) => {
@@ -29,7 +32,10 @@ class RecipeListContainer extends Component  {
 }
 
 const mapStatetoProps = (state) => {
-  return { recipes: state.recipes }
+  return {
+      recipes: state.recipes.recipe,
+      cooked: state.recipes.cooked
+   }
 }
 
 const mapDispatchToProps = (dispatch) => ({

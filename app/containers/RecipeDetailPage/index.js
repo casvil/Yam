@@ -42,7 +42,7 @@ class RecipeDetailPage extends Component {
 }
 
 const mapStatetoProps = (state, props) => {
-  const recipe = state.recipes[props.id]
+  const recipe = state.recipes.recipe[props.id]
   return { recipe }
 }
 

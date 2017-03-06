@@ -13,6 +13,7 @@
     "react-native": "0.41.2",
     "react-native-action-button": "^2.6.3",
     "react-native-circular-action-menu": "^0.4.0",
+    "react-native-collapsible": "^0.8.0",
     "react-native-linear-gradient": "^2.0.0",
     "react-native-router-flux": "^3.38.0",
     "react-native-spinkit": "^1.0.2",
