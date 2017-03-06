@@ -34,9 +34,9 @@ export const addRecipes = (recipes) => ({
   id: recipes.id
 });
 
-export const updateRecipe = (instructions, id) => ({
+export const updateRecipe = (data, id) => ({
   type: 'UPDATE_RECIPE',
-  instructions,
+  data,
   id
 });
 
@@ -52,20 +52,21 @@ export const getRecipes = () => ({
       }
     },
     next: true,
-    success: addRecipes
+    success: addRecipes,
+    nextFunction: getRecipesDetail
   },
 })
 
 export const getRecipesDetail = (id) => ({
   type: 'GET_RECIPES_DETAIL',
   api: {
-    url: `/recipes/${id}/analyzedInstructions?stepBreakdown=true`,
+    url: `/recipes/${id}/information?includeNutrition=false'`,
     config : {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'X-Mashape-Key':"U22l9xW2HymshjNYfrbP8U3Y4tPbp1stK76jsncRLKVTBHgxnO"
-      }
+      },
     },
     success: updateRecipe,
     id: id

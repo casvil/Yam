@@ -2,7 +2,6 @@
 import { REHYDRATE } from 'redux-persist/constants'
 
 function parseInstructions(data) {
-  console.log(data);
   var instructions = []
   if(Array.isArray(data)) {
     data.forEach(el => {
@@ -29,21 +28,23 @@ export default (state = {}, action) => {
             newValues.recipe = Object.assign({}, state.recipe, {[action.id]: recipe})
             }
           }
-        return Object.assign({}, state, newValues)
+        return Object.assign({}, state, newValues, { lastFetched: Date.now()})
       }
     case 'UPDATE_RECIPE': {
-      const addedInstructions = {}
-      const recipe = Object.assign({}, state.recipe[action.id], {instructions: parseInstructions(action.instructions)})
+      const addedData = {}
+      const recipe = Object.assign({}, state.recipe[action.id], {instructions: parseInstructions(action.data.analyzedInstructions)}, {ingredients: action.data.extendedIngredients})
       if(state.recipe[action.id]) {
-        addedInstructions.recipe = Object.assign({}, state.recipe, {[action.id]: recipe})
+        addedData.recipe = Object.assign({}, state.recipe, {[action.id]: recipe})
       }
-      return Object.assign({}, state, addedInstructions)
+      return Object.assign({}, state, addedData)
     }
     case 'COOK_RECIPE': {
       const recipe = Object.assign({}, action.recipe, { cooked: true})
       const newValues  = {}
       newValues.recipe = Object.assign({}, state.recipe, {[recipe.id] : recipe })
+      console.log(state.cooked++, typeof state.cooked);
       const cooked =  state.cooked ? state.cooked++ : 1
+      console.log(cooked);
       return Object.assign({}, state, newValues, { cooked })
     }
     case REHYDRATE:
