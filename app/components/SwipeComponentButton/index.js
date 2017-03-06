@@ -7,7 +7,7 @@ export default class SwipeComponentButton extends Component  {
 
   _onPress = () => {
     this.props.handleSurvey()
-    Actions.recipeList()
+    Actions.recipeList('welcome')
   }
 
   render() {

@@ -19,6 +19,11 @@ export const userDiet = (diet) => ({
   diet
 });
 
+export const cookRecipe = (recipe) => ({
+  type: 'COOK_RECIPE',
+  recipe
+})
+
 export const userSurvey = () => ({
   type: 'USER_SURVEY'
 });

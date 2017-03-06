@@ -4,6 +4,8 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
+import com.react.rnspinkit.RNSpinkitPackage;
 import com.reactnative.photoview.PhotoViewPackage;
 import cl.json.RNSharePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -29,6 +31,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BlurViewPackage(),
+            new RNSpinkitPackage(),
             new PhotoViewPackage(),
             new RNSharePackage(),
             new LinearGradientPackage(),

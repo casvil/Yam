@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { Title, Text } from '@shoutem/ui';
+import { Actions } from 'react-native-router-flux';
 
 import { userServings, userAllergies, getRecipes, userDiet, userSurvey } from '../../store/actions/'
 import PeopleCard from '../../components/PeopleCard/';
@@ -14,10 +15,10 @@ import { allergies, diet } from '../../data/'
 
 class SurveyContainer extends Component {
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
-      value: 3
+      value: 3,
     }
   }
 
@@ -79,7 +80,7 @@ class SurveyContainer extends Component {
 }
 
 const mapStatetoProps = (state) => {
-  return { state }
+  return { user: state.user }
 }
 
 const mapDispatchToProps = (dispatch) => ({

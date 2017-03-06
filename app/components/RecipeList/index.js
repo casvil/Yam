@@ -6,9 +6,10 @@ import { StyleSheet } from 'react-native';
 import styles from './styles.js';
 
 export default class RecipeList extends Component {
-  renderRow(data) {
+  renderRow = (data) => {
     const styles_recipeMeta = StyleSheet.flatten(styles.recipeMeta)
     const cells = data.map(item => {
+      const cooked = item.cooked ? 'Cooked!': 'Lets cook'
       return (
         <TouchableOpacity key={item.id} onPress={() => this.props.goToDetailPage({id: item.id})}>
           <Image
@@ -18,10 +19,14 @@ export default class RecipeList extends Component {
             >
           <Tile>
             <Title styleName="md-gutter-bottom">{item.title}</Title>
-              <View styleName="actions" style={styles_recipeMeta}>
-                <View styleName=" horizontal v-center">
+              <View styleName="actions">
+                <View style={styles_recipeMeta} styleName=" horizontal v-center">
                   <Icon style={styles.icon} name="timelapse"/>
                   <Text style={styles.text}>{item.readyInMinutes} mins</Text>
+                </View>
+                <View style={styles_recipeMeta} styleName="horizontal v-center">
+                  <Icon style={styles.icon} name="timelapse"/>
+                  <Text style={styles.text}>{ cooked }</Text>
                 </View>
               </View>
           </Tile>
@@ -48,7 +53,7 @@ export default class RecipeList extends Component {
         <ScrollView showsVerticalScrollIndicator={false} alwaysBounceVertical={false}>
           <ListView
             data={ groupedData }
-            renderRow={ this.renderRow.bind(this) }
+            renderRow={ this.renderRow }
           />
         </ScrollView>
       </View>

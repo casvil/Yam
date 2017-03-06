@@ -1,14 +1,6 @@
 'use strict';
 import { REHYDRATE } from 'redux-persist/constants'
 
-function parseRecipe (data) {
-  const id = data.id+ ''
-  const recipe = {}
-  recipe[id] = data
-  return recipe
-
-}
-
 function parseInstructions(data) {
   console.log(data);
   var instructions = []
@@ -28,11 +20,12 @@ export default (state = {}, action) => {
   switch (action.type) {
     case 'ADD_RECIPES': {
     const  newValues = {};
+    const recipe = Object.assign({}, action.recipes, { cooked: false })
         if(!state) {
-          newValues = parseRecipe(action.recipes)
+          newValues = {[action.id]: recipe}
         }
         else {
-          newValues= Object.assign({}, state, parseRecipe(action.recipes))
+          newValues= Object.assign({}, state, {[action.id]: recipe})
         }
         return Object.assign({}, state, newValues)
       }
@@ -43,6 +36,18 @@ export default (state = {}, action) => {
       }
       parseInstructions(action.instructions)
       return Object.assign({}, state, addedInstructions)
+    }
+    case 'COOK_RECIPE': {
+      const recipe = Object.assign({}, action.recipe, { cooked: true})
+      const newValues = {[recipe.id] : recipe }
+      newValues[recipe.id] = recipe
+      // if(!state.cooked || state.cooked === 7) {
+      //   newValues.cooked = 1
+      // } else {
+      //   newValues.cooked = state.cooked + 1
+      // }
+
+      return Object.assign({}, state, newValues)
     }
     case REHYDRATE:
       const incoming = action.payload.recipes

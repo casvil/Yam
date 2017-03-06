@@ -3,12 +3,13 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { NavigationBar, Title, Subtitle, Image, Tile, Button, ListView } from '@shoutem/ui';
 import Icon from 'react-native-vector-icons/EvilIcons'
 import { Actions } from 'react-native-router-flux';
+import ActionButton from 'react-native-action-button';
 
 import RecipeInstructions from '../RecipeInstructions/';
 import RecipeMetaData from '../RecipeMetaData/';
 import styles from './styles';
 
-export default ({ recipe, instructions }) => {
+export default ({ recipe, instructions, handleCooked }) => {
   let renderInstructions
   let renderIngredients
   let renderEquipment
@@ -80,6 +81,11 @@ export default ({ recipe, instructions }) => {
         </View>
           { renderInstructions }
       </ScrollView>
+      <ActionButton buttonColor='#000000'>
+      <ActionButton.Item buttonColor='#9b59b6' title="Cooked!" onPress={() => handleCooked(recipe)}>
+          <Icon name="chevron-left" size={30}/>
+        </ActionButton.Item>
+      </ActionButton>
   </View>
   )
 }

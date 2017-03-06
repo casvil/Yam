@@ -21,6 +21,7 @@ const store = createStore(
 )
 
 const persist = persistStore(store, { storage: AsyncStorage })
+persist.purge()
 const App = () => (
   <Provider store={store}>
     <AppContainer persist = {persist} />
