@@ -43,9 +43,7 @@ export default (state = {}, action) => {
       const recipe = Object.assign({}, action.recipe, { cooked: true})
       const newValues  = {}
       newValues.recipe = Object.assign({}, state.recipe, {[recipe.id] : recipe })
-      console.log(state.cooked++, typeof state.cooked);
       const cooked =  state.cooked ? state.cooked++ : 1
-      console.log(cooked);
       return Object.assign({}, state, newValues, { cooked })
     }
     case REHYDRATE:
