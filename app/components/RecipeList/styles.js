@@ -3,11 +3,12 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   recipeMeta: {
     backgroundColor: '#000000',
-    borderRadius: 5,
-    paddingLeft: 5,
-    paddingRight: 5,
+    borderRadius: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
     height: 25,
-    marginBottom: 10
+    marginBottom: 10,
+    opacity: 0.7
   },
 
   icon: {

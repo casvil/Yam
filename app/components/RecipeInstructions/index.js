@@ -7,13 +7,13 @@ export default ({step}) => {
       <View>
         <Row>
           <View styleName="vertical">
-            <View>
-              <Subtitle styleName="top">{step.number}</Subtitle>
+            <View style={{backgroundColor:'#000', width: 20, height: 20, borderRadius: 10, alignItems: 'center', justifyContent: 'center'}}>
+              <Subtitle styleName="top" style={{color:'#FFF'}}>{step.number}</Subtitle>
             </View>
             <Subtitle>{step.step}</Subtitle>
           </View>
+          <Divider styleName="line"/>
         </Row>
-        <Divider styleName="line"/>
     </View>
   )
 }

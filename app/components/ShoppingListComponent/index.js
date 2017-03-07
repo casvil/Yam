@@ -5,9 +5,8 @@ import { Actions } from 'react-native-router-flux';
 import Accordion from 'react-native-collapsible/Accordion';
 import Icon from 'react-native-vector-icons/EvilIcons'
 
-import ToggleListItem from '../ToggleListItem/';
 
-export default class ToggleList extends Component {
+export default class ShoppingListComponent extends Component {
 
   renderHeader = (section, index, isActive) => {
     const icon = isActive ? "chevron-down" : "chevron-right"

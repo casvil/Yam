@@ -10,16 +10,11 @@ import SwipeComponentButton from '../SwipeComponentButton';
 
 class Main extends Component {
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.user.survey) {
-      this.goToRecipes()
-    } else {
-      this.goToSurvey()
-    }
-  }
-
   componentDidMount() {
-    this.goToSurvey()
+    if (this.props.lastFetched + 604800000 <= Date.now() || !this.props.lastFetched) {
+      this.props.getRecipes()
+    }
+    this.goToRecipes()
   }
 
   goToSurvey = () => {
@@ -33,15 +28,22 @@ class Main extends Component {
     setTimeout(() => {
       Actions.pop()
       Actions.recipeList()
-    },6000)
+    },8000)
   }
 
   render() {
     return (
       <View style={{flex:1, alignItems: 'stretch'}}>
         <Image
-        source= {require('../../images/yam-homepage-2.png')}
-        />
+        style={{flex: 0.5 }}
+        blurRadius={1}
+        source= {{uri: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop='}}
+        >
+        <Tile>
+          <Spinner isVisible={true} size={100} color={'#FFFFFF'} type={'Arc'}/>
+          <Title>FINDING RECIPES JUST FOR YOU</Title>
+        </Tile>
+        </Image>
       </View>
     )
   }

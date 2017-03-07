@@ -7,16 +7,8 @@ import { Actions } from 'react-native-router-flux';
 class RecipeListContainer extends Component  {
   constructor(props) {
     super(props)
-    this.state = {
-      recipes: []
-    }
   }
 
-  componentDidMount() {
-    if (this.props.lastFetched + 604800000 <= Date.now() || !this.props.lastFetched) {
-      this.props.getRecipes()
-    }
-  }
 
   goToDetailPage = (id) => {
     Actions.recipesDetailPage(id)

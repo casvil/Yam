@@ -12,6 +12,7 @@ export default class RecipeList extends Component {
     const styles_recipeMeta = StyleSheet.flatten(styles.recipeMeta)
     const cells = data.map(item => {
       const cooked = item.cooked ? 'Cooked!': 'Lets cook'
+      const icon = item.cooked? 'heart' : 'comment'
       return (
         <TouchableOpacity key={item.id} onPress={() => this.props.goToDetailPage({id: item.id})}>
           <Image
@@ -27,7 +28,7 @@ export default class RecipeList extends Component {
                   <Text style={styles.text}>{item.readyInMinutes} mins</Text>
                 </View>
                 <View style={styles_recipeMeta} styleName="horizontal v-center">
-                  <Icon style={styles.icon} name="trophy" size={15}/>
+                  <Icon style={styles.icon} name={icon} size={15}/>
                   <Text style={styles.text}>{ cooked }</Text>
                 </View>
               </View>
