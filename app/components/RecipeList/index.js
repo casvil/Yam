@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Button, GridRow, NavigationBar, Subtitle, Title, ListView, Image ,Tile, Overlay} from '@shoutem/ui';
 import { Text, TouchableOpacity, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import { StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import Accordion from 'react-native-collapsible/Accordion';
 import styles from './styles.js';
 
@@ -22,11 +23,11 @@ export default class RecipeList extends Component {
             <Title styleName="md-gutter-bottom">{item.title}</Title>
               <View styleName="actions">
                 <View style={styles_recipeMeta} styleName=" horizontal v-center">
-                  <Icon style={styles.icon} name="timelapse"/>
+                  <Icon style={styles.icon} name="clock" size={15}/>
                   <Text style={styles.text}>{item.readyInMinutes} mins</Text>
                 </View>
                 <View style={styles_recipeMeta} styleName="horizontal v-center">
-                  <Icon style={styles.icon} name="timelapse"/>
+                  <Icon style={styles.icon} name="trophy" size={15}/>
                   <Text style={styles.text}>{ cooked }</Text>
                 </View>
               </View>
@@ -49,6 +50,12 @@ export default class RecipeList extends Component {
         <NavigationBar
           styleName="inline"
           centerComponent={ <Title>RECIPES</Title> }
+          rightComponent={
+            <Button
+              onPress={() => Actions.shoppingList()}>
+              <Icon name="cart" size={30}/>
+            </Button>
+          }
         />
         <View>
         <ScrollView showsVerticalScrollIndicator={false} alwaysBounceVertical={false}>

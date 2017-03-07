@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { ListView, NavigationBar, Title, Row, Text, Image } from '@shoutem/ui';
+import { ListView, NavigationBar, Title, Row, Text, Image, Button } from '@shoutem/ui';
+import { Actions } from 'react-native-router-flux';
 import Accordion from 'react-native-collapsible/Accordion';
 import Icon from 'react-native-vector-icons/EvilIcons'
 
@@ -21,7 +22,9 @@ export default class ToggleList extends Component {
   renderContent = (section) => {
     return (
       section.ingredients.map(el => {
-        const name = `${el.amount} ${el.unit} ${el.name}`
+        const unit = el.unitLong === 'gr'? 'g' : el.unitLong === 'ounces'  ? 'oz' : el.unitLong.toLowerCase()
+        const amount = el.amount < 1 ? `${1}/${1/el.amount}` : el.amount
+        const name = `${amount} ${unit} ${el.name}`
         return (
           <ToggleListItem
           key={el.id}
@@ -38,6 +41,12 @@ export default class ToggleList extends Component {
         <NavigationBar
           styleName="inline"
           centerComponent={ this.props.title }
+          leftComponent={
+            <Button
+              onPress={() => Actions.recipeList()}>
+              <Icon name="chevron-left" size={30}/>
+            </Button>
+          }
         />
       <ScrollView showsVerticalScrollIndicator={false} style={{margin: 10}}>
         <Accordion
