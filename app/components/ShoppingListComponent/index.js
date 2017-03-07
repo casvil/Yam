@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/EvilIcons'
 
 
 export default class ShoppingListComponent extends Component {
-
   renderHeader = (section, index, isActive) => {
     const icon = isActive ? "chevron-down" : "chevron-right"
     return (
@@ -39,6 +38,7 @@ export default class ShoppingListComponent extends Component {
       })
     );
   }
+
   render() {
     return (
     <View style={{flex: 1}}>
