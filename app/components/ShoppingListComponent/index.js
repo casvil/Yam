@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { ListView, NavigationBar, Title, Row, Text, Image, Button } from '@shoutem/ui';
+import { ListView, NavigationBar, Title, Row, Text, Image, Button, Subtitle, Caption, Divider } from '@shoutem/ui';
 import { Actions } from 'react-native-router-flux';
 import Accordion from 'react-native-collapsible/Accordion';
 import Icon from 'react-native-vector-icons/EvilIcons'
@@ -26,11 +26,16 @@ export default class ToggleList extends Component {
         const amount = el.amount < 1 ? `${1}/${1/el.amount}` : el.amount
         const name = `${amount} ${unit} ${el.name}`
         return (
-          <ToggleListItem
-          key={el.id}
-          name = { name }
-          handleData={() =>console.log('hey')}
-          />
+          <View key={el.id}>
+            <Subtitle style={{margin: 15, marginBottom:0}}>{name}</Subtitle>
+            <Row style={{paddingTop: 5}}>
+              <View styleName="horizontal  space-between">
+                <Caption>{section.cost[el.id].name}</Caption>
+                <Caption>£{section.cost[el.id].price.toFixed(2)}</Caption>
+              </View>
+            </Row>
+            <Divider styleName="line" />
+          </View>
         )
       })
     );

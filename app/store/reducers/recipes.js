@@ -40,15 +40,18 @@ export default (state = {}, action) => {
       if(state.recipe[action.id]) {
         addedData.recipe = Object.assign({}, state.recipe, {[action.id]: recipe})
       }
-      // let ingredients = []
-      // action.data.extendedIngredients.forEach(el => ingredients.push(el))
-      // console.log(ingredients);
-      // if(!state.ingredientsList) {
-      //   addedData.ingredientList  = [ingredients]
-      // } else {
-      //   addedData.ingredientList = [...state.ingredientList, ingredients]
-      // }
       return Object.assign({}, state, addedData)
+    }
+    case 'ADD_PRICE':{
+      const newValues = {}
+      const recipe = Object.assign({}, state.recipe[action.recipeID])
+      if(!recipe.cost) {
+        recipe.cost = {[action.id]: action.price}
+      } else {
+        recipe.cost = Object.assign({}, recipe.cost, {[action.id]: action.price})
+      }
+      newValues.recipe = Object.assign({}, state.recipe, {[action.recipeID]: recipe})
+      return Object.assign({}, state, newValues)
     }
     case 'COOK_RECIPE': {
       const recipe = Object.assign({}, action.recipe, { cooked: true})

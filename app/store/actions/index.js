@@ -40,6 +40,13 @@ export const updateRecipe = (data, id) => ({
   id
 });
 
+export const addPrice = (price, id, recipeID) => ({
+  type: 'ADD_PRICE',
+  price,
+  id,
+  recipeID
+})
+
 export const getRecipes = () => ({
   type: 'GET_RECIPES',
   api: {
@@ -52,6 +59,7 @@ export const getRecipes = () => ({
       }
     },
     next: true,
+    isRecipe: true,
     success: addRecipes,
     nextFunction: getRecipesDetail
   },
@@ -68,7 +76,22 @@ export const getRecipesDetail = (id) => ({
         'X-Mashape-Key':"U22l9xW2HymshjNYfrbP8U3Y4tPbp1stK76jsncRLKVTBHgxnO"
       },
     },
+    nextFunction: addPrice,
     success: updateRecipe,
     id: id
   },
 })
+
+// export const getPrice = (ingredient, id) => ({
+//   type: 'GET_PRICE',
+//   api: {
+//     url: `https://dev.tescolabs.com/grocery/products/?query={query}&offset={offset}&limit={limit}`,
+//     config: {
+//       method: 'GET',
+//       header: {
+//         'Content-Type': 'application/json',
+//         'Ocp-Apim-Subscription-Key': 'd4ebba80a86840649b7afc85639ee0b7'
+//       },
+//     },
+//   }
+// })

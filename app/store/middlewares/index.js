@@ -31,6 +31,14 @@ export default ({ dispatch, getState }) => next => action => {
         }
         else {
           dispatch(action.api.success(data , action.api.id))
+          data.extendedIngredients.forEach(el => {
+            fetch(`https://dev.tescolabs.com/grocery/products/?query=${el.name}&offset=0&limit=1`, { headers : {'Ocp-Apim-Subscription-Key': 'd4ebba80a86840649b7afc85639ee0b7'}})
+              .then(res => res.json())
+              .then(data => {
+                console.log(data);
+                dispatch(action.api.nextFunction({price: data.uk.ghs.products.results[0].price, name: data.uk.ghs.products.results[0].name}, el.id, action.api.id))
+              })
+          })
         }
       })
       .catch((err) => {
