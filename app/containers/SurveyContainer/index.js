@@ -10,7 +10,6 @@ import PeopleCard from '../../components/PeopleCard/';
 import ToggleList from '../../components/ToggleList/';
 import SwipeComponentButton from '../../components/SwipeComponentButton/'
 import IngredientList from '../IngredientList/';
-import images from '../../images/'
 import { allergies, diet } from '../../data/'
 
 class SurveyContainer extends Component {

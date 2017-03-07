@@ -20,7 +20,7 @@ export default class ShoppingListComponent extends Component {
   renderContent = (section) => {
     return (
       section.ingredients.map(el => {
-        const unit = el.unitLong === 'gr'? 'g' : el.unitLong === 'ounces'  ? 'oz' : el.unitLong.toLowerCase()
+        const unit = el.unitLong === 'grs' || el.unitLong === 'gr'  ? 'g' : el.unitLong === 'ounces'  ? 'oz' : el.unitLong.toLowerCase()
         const amount = el.amount < 1 ? `${1}/${1/el.amount}` : el.amount
         const name = `${amount} ${unit} ${el.name}`
         return (
