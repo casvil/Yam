@@ -26,8 +26,13 @@ class IngredientList extends Component {
 
   handlePress = () => {
     let temp = index++;
-    this.state.stateArr.push(temp)
-    this.setState({ stateArr: this.state.stateArr })
+    console.log('Props', this.props.state);
+    console.log('temp', temp);
+    console.log('index', index);
+    // if (!this.props.state.user.dislikes[0] || this.props.state.user.dislikes.length === index) {
+      this.state.stateArr.push(temp)
+      this.setState({ stateArr: this.state.stateArr })
+    // }
   }
 
   render() {

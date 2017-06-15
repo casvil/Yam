@@ -20,6 +20,9 @@ const store = createStore(
   compose (middleware, autoRehydrate())
 )
 
+// Clear storage when starting the app
+AsyncStorage.clear();
+
 const persist = persistStore(store, { storage: AsyncStorage })
 const App = () => (
   <Provider store={store}>
