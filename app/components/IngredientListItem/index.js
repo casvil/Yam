@@ -11,17 +11,18 @@ export default class IngredientListItem extends Component {
   };
 
   handleValue = (value) => {
+    this.props.onIngredient(value, this.props.id)
     this.setState({ value })
-  }
+  };
 
   render() {
     return (
-        <TextInput
-          placeholder={'e.g Bananas...'}
-          onChangeText={(value) => this.handleValue(value)}
-          onEndEditing={(event) => this.props.handleDislike(event.nativeEvent.text, this.props.id)}
-          value={this.state.value}
-        />
+      <TextInput
+        placeholder={'e.g Bananas...'}
+        onChangeText={(value) => this.handleValue(value)}
+        onEndEditing={(event) => this.props.handleDislike(event.nativeEvent.text, this.props.id)}
+        value={this.state.value}
+      />
     );
   };
 }

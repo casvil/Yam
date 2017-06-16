@@ -10,13 +10,13 @@ import SwipeComponentButton from '../../components/SwipeComponentButton/';
 import { dislikeIngredient } from '../../store/actions/'
 
 
-const index = 1
 class IngredientList extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      stateArr: []
+      stateArr: [""],
+      index: 1
     }
   }
 
@@ -24,24 +24,43 @@ class IngredientList extends Component {
     this.props.dislikeIngredient(ingredient, id)
   }
 
-  handlePress = () => {
-    let temp = index++;
-    console.log('Props', this.props.state);
-    console.log('temp', temp);
-    console.log('index', index);
-    // if (!this.props.state.user.dislikes[0] || this.props.state.user.dislikes.length === index) {
-      this.state.stateArr.push(temp)
-      this.setState({ stateArr: this.state.stateArr })
-    // }
+  addInput = () => {
+    // const length = this.state.stateArr.length
+    // console.log(length, this.state.index);
+    // console.log(this.state.stateArr);
+    // if(length < this.state.index || this.state.stateArr[length-1] === "") return
+
+    let nextIndex = this.state.index+1;
+    this.setState({ stateArr: this.state.stateArr.concat(""), index: nextIndex })
+    // console.log('state', this.state);
+    // console.log('dislikes', this.props.state.user.dislikes);
+    // console.log('prooops', this.props);
+    // console.log('index', this.state.index);
+  }
+
+  getIngredient = (ingr, i) => {
+    console.log('current ingredient', ingr, ' id', i);
+    const newStateArr = [
+      ...this.state.stateArr.slice(0, i),
+      ingr,
+      ...this.state.stateArr.slice(i+1, this.state.stateArr.length)
+    ]
+    console.log('New Array: ', newStateArr);
+    this.setState({
+      stateArr: newStateArr
+    })
+    newStateArr[newStateArr.length-1]!=="" && this.addInput()
   }
 
   render() {
-    let Arr = this.state.stateArr.map((el) => {
+    let Arr = this.state.stateArr.map((el, i) => {
+      console.log(el);
       return (
         <IngredientListItem
+          onIngredient={this.getIngredient}
           handleDislike={this.handleDislike}
-          key={el}
-          id={el}
+          key={i}
+          id={i}
         />
       )
     })
@@ -50,15 +69,8 @@ class IngredientList extends Component {
       <NavigationBar
       styleName="inline"
       centerComponent={ <Title>I DONT LIKE</Title> }
-      rightComponent={
-        <Button
-          onPress={() => this.handlePress()}>
-          <Icon name ="ios-add" size={30}/>
-        </Button>
-      }
       />
       <ScrollView>
-        <IngredientListItem key={0} id={0} handleDislike={this.handleDislike}/>
           { Arr }
       </ScrollView>
     </View>
