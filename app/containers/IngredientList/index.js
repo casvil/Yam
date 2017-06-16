@@ -15,8 +15,7 @@ class IngredientList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      stateArr: [""],
-      index: 1
+      ingredients: [""]
     }
   }
 
@@ -25,13 +24,13 @@ class IngredientList extends Component {
   }
 
   addInput = () => {
-    // const length = this.state.stateArr.length
+    // const length = this.state.ingredients.length
     // console.log(length, this.state.index);
-    // console.log(this.state.stateArr);
-    // if(length < this.state.index || this.state.stateArr[length-1] === "") return
+    // console.log(this.state.ingredients);
+    // if(length < this.state.index || this.state.ingredients[length-1] === "") return
 
     let nextIndex = this.state.index+1;
-    this.setState({ stateArr: this.state.stateArr.concat(""), index: nextIndex })
+    this.setState({ ingredients: this.state.ingredients.concat(""), index: nextIndex })
     // console.log('state', this.state);
     // console.log('dislikes', this.props.state.user.dislikes);
     // console.log('prooops', this.props);
@@ -39,26 +38,41 @@ class IngredientList extends Component {
   }
 
   getIngredient = (ingr, i) => {
-    console.log('current ingredient', ingr, ' id', i);
-    const newStateArr = [
-      ...this.state.stateArr.slice(0, i),
+
+    const newIngredients = [
+      ...this.state.ingredients.slice(0, i),
       ingr,
-      ...this.state.stateArr.slice(i+1, this.state.stateArr.length)
+      ...this.state.ingredients.slice(i+1, this.state.ingredients.length)
     ]
-    console.log('New Array: ', newStateArr);
+    .filter(el => el !== "")
+    .concat("")
+
     this.setState({
-      stateArr: newStateArr
+      ingredients: newIngredients
     })
-    newStateArr[newStateArr.length-1]!=="" && this.addInput()
+    // console.log(newIngredients);
+
+    // newIngredients[newIngredients.length-1]!=="" && this.addInput()
+    //
+    // const newnewIng = newIngredients.map((el, i) => {
+    //   return el !== ""
+    // }).concat("")
+    // console.log('newIngr',newnewIng);
+    // this.setState({
+    //   ingredients: newIngredients
+    // })
+
   }
 
   render() {
-    let Arr = this.state.stateArr.map((el, i) => {
-      console.log(el);
+    let Arr = this.state.ingredients.map((el, i) => {
+      // console.log('i', i);
+      // console.log(this.state.ingredients);
       return (
         <IngredientListItem
           onIngredient={this.getIngredient}
           handleDislike={this.handleDislike}
+          value={el}
           key={i}
           id={i}
         />
