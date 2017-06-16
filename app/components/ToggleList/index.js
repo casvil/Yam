@@ -17,7 +17,7 @@ export default class ToggleList extends Component {
 
   render() {
     return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, paddingBottom: 60}}>
         <NavigationBar
           styleName="inline"
           centerComponent={ this.props.title }

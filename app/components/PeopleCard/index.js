@@ -21,7 +21,7 @@ export default class PeopleCard extends Component {
          />
         <Image
         styleName="large-square"
-        source={{uri: 'https://images.unsplash.com/photo-1488324346298-5ad3d8f96d0d?dpr=2&auto=format&fit=crop&w=1080&h=1412&q=80&cs=tinysrgb&crop=' }}
+        source={{uri: 'https://images.unsplash.com/photo-1493274366568-b608e3895174?dpr=2&auto=format&fit=crop&w=1500&h=1060&q=80&cs=tinysrgb&crop=&bg='}}
         />
         <Slider
         value={ this.props.value }

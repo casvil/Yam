@@ -15,7 +15,7 @@ export default class SwipeComponentButton extends Component  {
       <View styleName="horizontal h-center">
       <Button
       styleName="full-width, dark"
-      style={{borderRadius: 20, width: 125, padding: 5, backgroundColor: '#000', bottom: 50 }}
+      style={{borderRadius: 20, width: 125, padding: 5, backgroundColor: '#000', bottom: 22 }}
       onPress={() => this._onPress()}>
       <Text style={{color: '#FFF'}}>FINISH SURVEY</Text>
       </Button>

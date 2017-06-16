@@ -54,6 +54,11 @@ class SurveyContainer extends Component {
   render() {
     return (
       <Swiper
+          showsButtons={true}
+          nextButton={<Text style={{color: '#000', fontSize: 50, fontFamily: 'Arial'}}>›</Text>}
+          prevButton={<Text style={{color: '#000', fontSize: 50, fontFamily: 'Arial'}}>‹</Text>}
+          buttonWrapperStyle={{ alignItems: 'flex-end' }}
+          showsPagination={true}
           renderPagination={ this.renderPagination }
           paginationStyle={{
             bottom: 1000, left: null, right: 10
