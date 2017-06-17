@@ -20,6 +20,7 @@ class IngredientList extends Component {
   }
 
   handleDislike = (ingredient, id) => {
+    console.log(ingredient);
     this.props.dislikeIngredient(ingredient, id)
   }
 
@@ -38,7 +39,7 @@ class IngredientList extends Component {
   }
 
   getIngredient = (ingr, i) => {
-
+    console.log('newINGR', ingr);
     const newIngredients = [
       ...this.state.ingredients.slice(0, i),
       ingr,
@@ -65,6 +66,7 @@ class IngredientList extends Component {
   }
 
   render() {
+    console.log(this.state);
     let Arr = this.state.ingredients.map((el, i) => {
       // console.log('i', i);
       // console.log(this.state.ingredients);
