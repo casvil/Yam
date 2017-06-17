@@ -4,6 +4,21 @@ export const dislikeIngredient = (ingredient, id) => ({
   id,
 });
 
+export const autocompleteIngredients = (ingredient) => ({
+  type: 'AUTOCOMPLETE_ING',
+  ingredient,
+  api: {
+    url: `/food/ingredients/autocomplete?&query${ingredient}`,
+    config : {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Mashape-Key':"U22l9xW2HymshjNYfrbP8U3Y4tPbp1stK76jsncRLKVTBHgxnO"
+      }
+    },
+  },
+});
+
 export const userServings = (value) => ({
   type: 'USER_SERVINGS',
   value

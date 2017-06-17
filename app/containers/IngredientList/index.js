@@ -51,7 +51,7 @@ class IngredientList extends Component {
     this.setState({
       ingredients: newIngredients
     })
-    // console.log(newIngredients);
+    console.log('NEWINGR', newIngredients);
 
     // newIngredients[newIngredients.length-1]!=="" && this.addInput()
     //
