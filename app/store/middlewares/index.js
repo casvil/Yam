@@ -35,8 +35,17 @@ export default ({ dispatch, getState }) => next => action => {
             fetch(`https://dev.tescolabs.com/grocery/products/?query=${el.name}&offset=0&limit=1`, { headers : {'Ocp-Apim-Subscription-Key': 'd4ebba80a86840649b7afc85639ee0b7'}})
               .then(res => res.json())
               .then(data => {
-                console.log(data);
-                dispatch(action.api.nextFunction({price: data.uk.ghs.products.results[0].price, name: data.uk.ghs.products.results[0].name}, el.id, action.api.id))
+                console.log('Data---------', data);
+                if (data.uk.ghs.products.results.length>0) {
+                  dispatch(action.api.nextFunction({price: data.uk.ghs.products.results[0].price, name: data.uk.ghs.products.results[0].name}, el.id, action.api.id))
+                } else {
+                  console.log('DOESNT EXIST');
+                  fetch(`https://dev.tescolabs.com/grocery/products/?query=${data.uk.ghs.products.suggestions[0].text}&offset=0&limit=1`, { headers : {'Ocp-Apim-Subscription-Key': 'd4ebba80a86840649b7afc85639ee0b7'}})
+                    .then(res => res.json())
+                    .then(data => {
+                      dispatch(action.api.nextFunction({price: data.uk.ghs.products.results[0].price, name: data.uk.ghs.products.results[0].name}, el.id, action.api.id))
+                    })
+                }
               })
           })
         }
