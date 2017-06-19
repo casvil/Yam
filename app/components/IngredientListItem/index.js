@@ -12,14 +12,13 @@ const styles = StyleSheet.create({
     height: 50,
     margin: 10,
     marginTop: 10,
-    backgroundColor: '#FFF',
-    borderColor: 'lightblue',
+    borderColor: 'gray',
     borderWidth: 1,
+    flex: 1,
+    backgroundColor: 'white',
   },
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
-    height: 290
   }
 });
 
@@ -71,7 +70,7 @@ export default class IngredientListItem extends Component {
     console.log('rendering id ', this.props.id);
     console.log('state to render', this.state.data);
     return (
-      <View>
+      <View style={{flex: 1}}>
         <View style={styles.container}>
           <AutoComplete
             style={styles.autocomplete}
@@ -80,7 +79,9 @@ export default class IngredientListItem extends Component {
             onTyping={this.onTyping}
             onSelect={this.onSelect}
 
-            placeholder="Search for an apple"
+
+            autoCompleteTableViewHidden={false}
+            placeholder="Search for an ingredient.."
             clearButtonMode="never"
             returnKeyType="go"
             textAlign="center"

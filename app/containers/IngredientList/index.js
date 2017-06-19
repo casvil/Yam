@@ -81,12 +81,12 @@ class IngredientList extends Component {
       )
     })
     return (
-    <View>
+    <View style={{flex: 1}}>
       <NavigationBar
       styleName="inline"
       centerComponent={ <Title>I DONT LIKE</Title> }
       />
-      <ScrollView>
+      <ScrollView style={{flex: 1}}>
           { Arr }
       </ScrollView>
     </View>
