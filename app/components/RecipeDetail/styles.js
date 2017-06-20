@@ -8,9 +8,14 @@ export const styles = StyleSheet.create({
     padding: 2,
     marginBottom: 10
   },
-
-  textWhite: {
-    color: '#FFFFFF'
+  buyTitle: {
+    backgroundColor: 'white',
+    borderRadius: 10, width: 100,
+    alignItems: 'center',
+    padding: 2,
+    marginBottom: 10,
+    marginLeft: 15,
+    borderColor: 'black'
   }
 })
 
