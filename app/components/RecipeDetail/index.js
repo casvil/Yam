@@ -10,18 +10,29 @@ import RecipeInstructions from '../RecipeInstructions/';
 import RecipeMetaData from '../RecipeMetaData/';
 import styles from './styles';
 
+import { ingredientsUlabox } from '../../data/index.js';
 
-// export default ({ recipe, instructions, handleCooked }) => {
 export default class extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {}
-
   }
 
   postCart = () => {
-    Actions.checkout()
+    let mappedIngredients = [];
+    let encodedIngredients = '';
+    mappedIngredients = this.props.recipe.ingredients.map((el) => ingredientsUlabox[el.id].id)
+    console.log('MAP', mappedIngredients);
+
+    encodedIngredients = mappedIngredients.reduce((accum, el) => {
+      return accum + encodeURIComponent(`products[${el}][id]`)+`=`+encodeURIComponent(`${el}`)+`&`+encodeURIComponent(`products[${el}][qty]`)+`=1&`
+    }, '')
+
+    console.log('encodedIngredients ', encodedIngredients);
+
+    Actions.checkout(encodedIngredients);
+    // console.log(this.props.recipe.ingredients);
     // fetch(`https://www.ulabox.com/mi-carrito/productos/mas`,
     //   {
     //     method: 'POST',
