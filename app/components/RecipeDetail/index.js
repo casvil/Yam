@@ -20,18 +20,29 @@ export default class extends React.Component {
   }
 
   postCart = () => {
+    console.log('-------RECIPE-------', this.props.recipe);
     let mappedIngredients = [];
     let encodedIngredients = '';
-    mappedIngredients = this.props.recipe.ingredients.map((el) => ingredientsUlabox[el.id].id)
+
+    mappedIngredients = this.props.recipe.ingredients
+    .map((el) => {
+      if(ingredientsUlabox[el.id] !== undefined) return ingredientsUlabox[el.id].id
+    })
+    .filter((el) => el !== undefined)
+
     console.log('MAP', mappedIngredients);
+    console.log('PROPS', this.props);
+    if(mappedIngredients.length > 0) {
+      encodedIngredients = mappedIngredients.reduce((accum, el) => {
+        return accum + encodeURIComponent(`products[${el}][id]`)+`=`+encodeURIComponent(`${el}`)+`&`+encodeURIComponent(`products[${el}][qty]`)+`=1&`
+      }, '')
 
-    encodedIngredients = mappedIngredients.reduce((accum, el) => {
-      return accum + encodeURIComponent(`products[${el}][id]`)+`=`+encodeURIComponent(`${el}`)+`&`+encodeURIComponent(`products[${el}][qty]`)+`=1&`
-    }, '')
+      console.log('encodedIngredients ', encodedIngredients);
+      Actions.checkout(encodedIngredients);
+    } else {
+      Actions.checkout()
+    };
 
-    console.log('encodedIngredients ', encodedIngredients);
-
-    Actions.checkout(encodedIngredients);
     // console.log(this.props.recipe.ingredients);
     // fetch(`https://www.ulabox.com/mi-carrito/productos/mas`,
     //   {
@@ -141,7 +152,7 @@ export default class extends React.Component {
             { renderInstructions }
         </ScrollView>
         <ActionButton buttonColor='#000000'>
-        <ActionButton.Item buttonColor='#9b59b6' title="Cooked!" onPress={() => this.props.instructions(this.props.recipe)}>
+        <ActionButton.Item buttonColor='#9b59b6' title="Cooked!" onPress={() => this.props.handleCooked(this.props.recipe)}>
             <Icon name="chevron-left" size={30}/>
           </ActionButton.Item>
         </ActionButton>
