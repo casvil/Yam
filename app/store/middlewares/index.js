@@ -34,7 +34,7 @@ export default ({ dispatch, getState }) => next => action => {
         else {
           dispatch(action.api.success(data , action.api.id))
           data.extendedIngredients.forEach(el => {
-            fetch(`https://dev.tescolabs.com/grocery/products/?query=${el.name}&offset=0&limit=1`, { headers : {'Ocp-Apim-Subscription-Key': 'ea9ee1e590b74620b3379c9ea54bbe22'}})
+            fetch(`https://dev.tescolabs.com/grocery/products/?query=${el.name}&offset=0&limit=1`, { headers : {'Ocp-Apim-Subscription-Key': '9fe27cf57c544f759e594aaaa8c97230'}})
               .then(res => res.json())
               .then(data => {
                 console.log('eLEMENT', el.id);

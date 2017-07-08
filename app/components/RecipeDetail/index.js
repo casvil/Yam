@@ -96,7 +96,7 @@ export default class extends React.Component {
       renderEquipment = this.props.instructions.map((step) => {
         return step.equipment.map(el => {
           return (
-            <RecipeMetaData data={ el } width={ 90 } tileHeight= { 100 }imageHeight={ 50 }/>
+            <RecipeMetaData data={ el } width={ 90 } tileHeight= { 100 } imageHeight={ 50 }/>
           )
         })
       })

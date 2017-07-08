@@ -9,7 +9,14 @@ import { getRecipes } from '../../store/actions/index.js'
 import SwipeComponentButton from '../SwipeComponentButton';
 
 class Main extends Component {
-
+  constructor(props) {
+    super(props)
+    if (__DEV__) {
+      console.log('Development');
+    } else {
+      console.log('Production');
+    }
+  }
   componentWillReceiveProps(nextProps) {
     if(nextProps.user.survey) {
       this.goToRecipes()
@@ -38,8 +45,9 @@ class Main extends Component {
 
   render() {
     return (
-      <View style={{flex:1, alignItems: 'stretch'}}>
+      <View style={{flex:1}}>
         <Image
+        style={{flex: 1}}
         source= {require('../../images/yam-homepage-2.png')}
         />
       </View>
