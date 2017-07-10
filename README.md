@@ -11,10 +11,14 @@ A meal planning mobile app for iOS that takes in to account your dislikes, aller
 
 Note: You will need to have react-native and XCode already set up for this to work
 
-<img src="./app/images/yam-homepage-2.png" alt="Yam" width=200px/> <img src="./app/images/Allergies.png" alt="Yam" width=200px/>
+<img src="./app/images/yam-homepage-2.png" alt="Yam" width=200px/>
+<img src="./app/images/Table.png" alt="Yam" width=200px/>
+<img src="./app/images/Allergies.png" alt="Yam" width=200px/>
 
-<img src="./app/images/RecipeList.png" alt="Yam" width=200px/> <img src="app/images/RecipeDetailPage.png" alt="Yam" width=200px/>
+<img src="./app/images/RecipeList.png" alt="Yam" width=200px/>
+<img src="app/images/RecipeDetailPage.png" alt="Yam" width=200px/>
 <img src="./app/images/ShoppingList.png" alt="Yam" width=200px/>
+<img src="./app/images/checkout.png" alt="Yam" width=200px/>
 
 ## Tech Stack
 
